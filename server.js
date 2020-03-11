@@ -5,8 +5,6 @@ const nodemailer = require("nodemailer");
 const fetch = require('node-fetch');
 const http = require("http");
 
-
-
 const app = express();// Allow any method from any host and log requests
 
 require('dotenv').config()
@@ -18,6 +16,13 @@ async function getWeatherData(){
     return data.weather[0].main
 }
 
+async function getIssData(){
+    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
+    const data = await response.json();
+    console.log(data)
+    return data
+}
+
 const routes = express.Router();
 const config = {
     host: process.env.HOST,
@@ -27,9 +32,11 @@ const config = {
     emailReceber: process.env.emailReceber
 };
 
-let weatherData = undefined
+let weatherData = undefined;
+let issData = undefined;
 
 setInterval(() => {weatherData = getWeatherData()}, 10000);
+setInterval(() => {issData = getIssData()}, 2500);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -55,6 +62,11 @@ app.use('/', routes);
 
 app.get('/weather/test', async (req, res) => {
     res.send(await weatherData);
+});
+
+app.get('/iss/getdata', async(req, res) => {
+    res.set('Content-Type', 'application/json');
+    res.json(await issData);
 });
 
 app.post('/send/mail', (req, res) => {
