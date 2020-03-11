@@ -55,7 +55,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 routes.get('/', (req, res) => {
-    res.send("Olá, está API busca servir meus proprios aplicativos, essa pagina serve para dizer que a API está online mas suas funcionalidades são apenas para uso pessoal");
+    res.send("Olá, esta API busca servir meus proprios aplicativos, essa pagina serve para dizer que a API está online mas suas funcionalidades são apenas para uso pessoal");
 });
 
 app.use('/', routes);
