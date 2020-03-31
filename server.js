@@ -78,7 +78,7 @@ app.get('/iss/getdata', async(req, res) => {
     res.json(await issData);
 });
 
-app.get('/iss/getcoronga', async(req, res) => {
+app.get('/coronga/getcoronga', async(req, res) => {
     res.set('Content-Type', 'application/json');
     res.json(await corongaData);
 });
