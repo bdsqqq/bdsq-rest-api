@@ -17,6 +17,13 @@ async function getWeatherData(){
 }
 
 async function getIssData(){
+    const response = await fetch('https://covid2019-api.herokuapp.com/v2/country/brazil');
+    const data = await response.json();
+    console.log(data)
+    return data
+}
+
+async function getCorongaData(){
     const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
     const data = await response.json();
     console.log(data)
@@ -34,9 +41,11 @@ const config = {
 
 let weatherData = undefined;
 let issData = undefined;
+let corongaData = undefined;
 
 setInterval(() => {weatherData = getWeatherData()}, 10000);
 setInterval(() => {issData = getIssData()}, 2500);
+setInterval(() => {corongaData = getCorongaData()}, 36000);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -67,6 +76,11 @@ app.get('/weather/test', async (req, res) => {
 app.get('/iss/getdata', async(req, res) => {
     res.set('Content-Type', 'application/json');
     res.json(await issData);
+});
+
+app.get('/iss/getcoronga', async(req, res) => {
+    res.set('Content-Type', 'application/json');
+    res.json(await corongaData);
 });
 
 app.post('/send/mail', (req, res) => {
