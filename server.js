@@ -43,6 +43,11 @@ let weatherData = undefined;
 let issData = undefined;
 let corongaData = undefined;
 
+
+weatherData = getWeatherData();
+issData = getIssData();
+corongaData = getCorongaData();
+
 setInterval(() => {weatherData = getWeatherData()}, 10000);
 setInterval(() => {issData = getIssData()}, 2500);
 setInterval(() => {corongaData = getCorongaData()}, 36000);
