@@ -16,14 +16,14 @@ async function getWeatherData(){
     return data.weather[0].main
 }
 
-async function getIssData(){
+async function getCorongaData(){
     const response = await fetch('https://covid2019-api.herokuapp.com/v2/country/brazil');
     const data = await response.json();
     console.log(data)
     return data
 }
 
-async function getCorongaData(){
+async function getIssData(){
     const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
     const data = await response.json();
     console.log(data)
