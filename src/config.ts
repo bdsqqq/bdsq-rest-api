@@ -1,4 +1,3 @@
-
 import {config as configDotenv} from 'dotenv'
 import {resolve} from 'path'
 
