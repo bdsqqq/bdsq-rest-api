@@ -1,10 +1,10 @@
 {
-  "name": "bdsq-rest-api-remake",
+  "name": "bdsq-rest-api",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node build/index.js",
+    "start": "node src/server.js",
     "build": "tsc",
     "postinstall": "npm run build",
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts"
