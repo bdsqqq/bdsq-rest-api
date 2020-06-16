@@ -1,0 +1,10 @@
+PORT=PORT
+HOST=HOST
+HOSTPORT=HOSTPORT 
+
+emailReceber=emailReceber
+emailContato=emailContato
+passEmailContato=passEmailContato
+
+WEATHER_API_KEY=WEATHER_API_KEY
+WEATHER_API_URL=WEATHER_API_URL
